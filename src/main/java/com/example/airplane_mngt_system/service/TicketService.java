@@ -29,4 +29,10 @@ public class TicketService {
         }
         return false;
     }
+
+    // Get ticket by ID method
+    public Ticket getTicketById(Long ticketId) {
+        Optional<Ticket> ticket = ticketRepository.findById(ticketId);
+        return ticket.orElse(null);  // Returns null if ticket not found
+    }
 }
