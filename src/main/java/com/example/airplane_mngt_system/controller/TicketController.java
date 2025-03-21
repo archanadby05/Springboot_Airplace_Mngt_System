@@ -30,4 +30,13 @@ public class TicketController {
 
         return ticketService.bookTicket(passengerName, passengerEmail, flight);
     }
+    @DeleteMapping("/cancel/{ticketId}")
+    public String cancelTicket(@PathVariable Long ticketId) {
+        boolean cancelled = ticketService.cancelTicket(ticketId);
+        if (cancelled) {
+            return "Ticket successfully cancelled";
+        } else {
+            return "Ticket not found";
+        }
+    }
 }
